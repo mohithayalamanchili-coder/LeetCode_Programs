@@ -12,6 +12,15 @@ class Solution:
             else:
                 k+=1
         return k """
+        """low=1
+        high=max(piles)
+        while low<high:
+            mid=(low+high)//2
+            if caneat(piles,h,mid):
+                high=mid
+            else:
+                low=mid+1
+        return low"""
         low=1
         high=max(piles)
         while low<high:
@@ -20,5 +29,5 @@ class Solution:
                 high=mid
             else:
                 low=mid+1
-        return low                       
+        return high                       
         
