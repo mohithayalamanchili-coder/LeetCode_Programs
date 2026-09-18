@@ -22,4 +22,4 @@ class Solution(object):
                     else:
                         return False 
         return not st                           
-        
+        # not st means ckecking either stack is empty or not
