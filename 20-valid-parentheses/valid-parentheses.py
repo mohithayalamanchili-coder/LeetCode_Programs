@@ -6,15 +6,18 @@ class Solution(object):
         """
         open_b="([{"
         closed_b=")]}"
+        d=dict(zip(closed_b,open_b)) # ')' : '(',']':'[','}':'{'
         st=[]
         for i in s:
+            # open brackets go into stack
             if i in open_b:
                 st.append(i)
-            else:
-                if not st:
+            else:        # when a close bracket is encountered
+                if not st:       # if stack is empty , sequence is invalid
                     return False
                 else:
-                    if i==')' and st[-1]=='(' or st[-1]=='{' and i=='}' or i==']' and st[-1]=='[':
+                    # check if stack top is corresponding open bracket for this close
+                    if d[i]==st[-1]:
                         st.pop()
                     else:
                         return False 
