@@ -4,25 +4,19 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
-        
-        stack = []
-
-        pairs = {
-            ')': '(',
-            '}': '{',
-            ']': '['
-        }
-
-        for ch in s:
-            if ch in "({[":
-                stack.append(ch)
+        open_b="([{"
+        closed_b=")]}"
+        st=[]
+        for i in s:
+            if i in open_b:
+                st.append(i)
             else:
-                if not stack:
+                if not st:
                     return False
-
-                top = stack.pop()
-
-                if top != pairs[ch]:
-                    return False
-
-        return len(stack) == 0
+                else:
+                    if i==')' and st[-1]=='(' or st[-1]=='{' and i=='}' or i==']' and st[-1]=='[':
+                        st.pop()
+                    else:
+                        return False 
+        return not st                           
+        
